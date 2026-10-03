@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - CodeVibe</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        customBg: '#0f1015',
+                        cardBg: '#181922',
+                        purpleAccent: '#9333ea',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #0f1015;
+            color: #f8fafc;
+            height: 250vh; /* Scroll check karne ke liye extra height */
+        }
+    </style>
+</head>
+<body class="selection:bg-purple-500 selection:text-white">
+
+    <!-- Sticky Dual-Tier Navbar -->
+    <header id="navbar" class="sticky top-0 z-50 pt-4 px-4 sm:px-8 bg-[#0f1015]/95 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto flex flex-col items-center">
+            
+            <!-- UPPER LAYER: Tab-Style Menu Bar (Contact Active) -->
+            <nav class="hidden md:flex items-center justify-center bg-slate-900/90 rounded-t-xl p-1.5 gap-1 border-t border-x border-slate-800 shadow-lg">
+                <a href="home.html" class="px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-all">Home</a>
+                <a href="about.html" class="px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-all">About</a>
+                <a href="services.html" class="px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-all">Services</a>
+                <a href="project.html" class="px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-all">Project</a>
+                <a href="contact.html" class="px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-white bg-purple-600 rounded-lg shadow-md transition-all">Contact</a>
+            </nav>
+
+            <!-- LOWER LAYER: Brand Name Logo & Contact Us Button Box -->
+            <div class="w-full bg-[#16171f] border border-slate-800 rounded-2xl px-6 py-4 flex items-center justify-between shadow-2xl relative">
+                
+                <!-- Logo & Brand Name -->
+                <a href="home.html" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-700 to-purple-400 flex items-center justify-center shadow-lg shadow-purple-950 group-hover:scale-105 transition-transform duration-300">
+                        <i class="fa-solid fa-code text-white text-lg"></i>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-white">
+                        Code<span class="text-purple-400">Vibe</span>
+                    </span>
+                </a>
+
+                <!-- Desktop Contact Us Button -->
+                <div class="hidden md:block">
+                    <a href="contact.html" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium text-sm shadow-lg shadow-purple-600/20 hover:shadow-purple-600/40 hover:scale-105 transition-all duration-300">
+                        Contact Us
+                    </a>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-slate-300 hover:text-white focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl transition-transform duration-300" id="menu-icon"></i>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Mobile Dropdown Menu (Contact Active) -->
+            <div id="mobile-menu" class="hidden md:hidden w-full bg-[#16171f] border-x border-b border-slate-800 rounded-b-2xl px-6 py-5 space-y-3 shadow-2xl mt-[-8px] pt-6 z-[-1]">
+                <a href="home.html" class="block text-sm font-semibold uppercase tracking-wider text-slate-300 hover:text-purple-400 py-1">Home</a>
+                <a href="about.html" class="block text-sm font-semibold uppercase tracking-wider text-slate-300 hover:text-purple-400 py-1">About</a>
+                <a href="services.html" class="block text-sm font-semibold uppercase tracking-wider text-slate-300 hover:text-purple-400 py-1">Services</a>
+                <a href="project.html" class="block text-sm font-semibold uppercase tracking-wider text-slate-300 hover:text-purple-400 py-1">Project</a>
+                <a href="contact.html" class="block text-sm font-semibold uppercase tracking-wider text-purple-400 py-1">Contact</a>
+                <div class="pt-2">
+                    <a href="contact.html" class="block text-center w-full py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium text-sm">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Scroll Progress Outline Border -->
+        <div class="w-full max-w-6xl mx-auto h-[2px] bg-slate-800 mt-4">
+            <div id="scroll-progress" class="h-full bg-gradient-to-r from-purple-500 to-indigo-500 w-0 transition-all duration-100"></div>
+        </div>
+    </header>
+
+    <!-- CONTACT PAGE HERO SECTION -->
+<section class="max-w-5xl mx-auto px-4 sm:px-8 pt-20 pb-16 text-center space-y-6">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs sm:text-sm font-semibold tracking-wide backdrop-blur-md">
+        <i class="fa-solid fa-envelope"></i> Get In Touch
+    </div>
+    
+    <h1 class="text-4xl sm:text-6xl font-black text-white tracking-tight leading-tight">
+        Let's Connect & <br>
+        <span class="bg-gradient-to-r from-purple-400 via-fuchsia-300 to-indigo-300 bg-clip-text text-transparent">
+            Talk About Your Project
+        </span>
+    </h1>
+
+    <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+        Have questions or want to work together? Reach out through any of the channels below or fill out the simple form.
+    </p>
+</section>
+
+<!-- CONTACT INFO & SIMPLE FORM SECTION -->
+<section class="max-w-7xl mx-auto px-4 sm:px-8 pb-20">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        
+        <!-- Left Side: Contact Information Cards -->
+        <div class="lg:col-span-1 space-y-6">
+            
+            <!-- Phone 1 -->
+            <div class="bg-[#181922] border border-slate-800 rounded-2xl p-6 flex items-center gap-5 shadow-xl hover:border-purple-500/40 transition-colors">
+                <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center text-lg flex-shrink-0">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold text-sm">Phone Number</h3>
+                    <p class="text-slate-400 text-sm mt-0.5">03030542204</p>
+                </div>
+            </div>
+
+            <!-- Phone 2 -->
+            <div class="bg-[#181922] border border-slate-800 rounded-2xl p-6 flex items-center gap-5 shadow-xl hover:border-purple-500/40 transition-colors">
+                <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center text-lg flex-shrink-0">
+                    <i class="fa-solid fa-phone-volume"></i>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold text-sm">Alternate Phone</h3>
+                    <p class="text-slate-400 text-sm mt-0.5">+92 322 8681128</p>
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="bg-[#181922] border border-slate-800 rounded-2xl p-6 flex items-center gap-5 shadow-xl hover:border-purple-500/40 transition-colors">
+                <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center text-lg flex-shrink-0">
+                    <i class="fa-solid fa-envelope-open-text"></i>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold text-sm">Email Address</h3>
+                    <p class="text-slate-400 text-xs sm:text-sm mt-0.5 break-all">sadiamazahr2204@gmail.com</p>
+                </div>
+            </div>
+
+            <!-- Location -->
+            <div class="bg-[#181922] border border-slate-800 rounded-2xl p-6 flex items-center gap-5 shadow-xl hover:border-purple-500/40 transition-colors">
+                <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center text-lg flex-shrink-0">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold text-sm">Location</h3>
+                    <p class="text-slate-400 text-sm mt-0.5">Okara, Pakistan</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Right Side: Simple Contact Form -->
+        <div class="lg:col-span-2 bg-[#181922] border border-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl">
+            <div class="space-y-2 mb-8">
+                <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">Send a Message</h2>
+                <p class="text-slate-400 text-sm">Feel free to drop a line using the simple form below.</p>
+            </div>
+
+            <form onsubmit="handleSimpleForm(event)" class="space-y-5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-slate-300 text-xs font-semibold uppercase tracking-wider mb-2">Your Name</label>
+                        <input type="text" required placeholder="Enter your name" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-purple-500 transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-slate-300 text-xs font-semibold uppercase tracking-wider mb-2">Your Email</label>
+                        <input type="email" required placeholder="Enter your email" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-purple-500 transition-colors">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-slate-300 text-xs font-semibold uppercase tracking-wider mb-2">Subject</label>
+                    <input type="text" required placeholder="What is this regarding?" class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-purple-500 transition-colors">
+                </div>
+
+                <div>
+                    <label class="block text-slate-300 text-xs font-semibold uppercase tracking-wider mb-2">Message</label>
+                    <textarea rows="4" required placeholder="Write your message here..." class="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-purple-500 transition-colors resize-none"></textarea>
+                </div>
+
+                <button type="submit" class="w-full sm:w-auto py-3.5 px-8 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-sm tracking-wide shadow-lg shadow-purple-600/30 transition-all flex items-center justify-center gap-2">
+                    Submit Message <i class="fa-solid fa-paper-plane text-xs"></i>
+                </button>
+            </form>
+
+            <div id="formSuccess" class="hidden mt-5 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-medium text-center">
+                <i class="fa-solid fa-circle-check mr-2"></i> Message sent successfully! We will get back to you soon.
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- FAQ SECTION -->
+<section class="max-w-4xl mx-auto px-4 sm:px-8 pb-24">
+    <div class="text-center space-y-3 mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs font-semibold uppercase tracking-wide">
+            <i class="fa-solid fa-circle-question"></i> Help & Answers
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">Frequently Asked Questions</h2>
+        <p class="text-slate-400 text-sm sm:text-base">Got questions? Here are answers to some of the most common inquiries.</p>
+    </div>
+
+    <div class="space-y-4">
+        <!-- FAQ Item 1 -->
+        <div class="bg-[#181922] border border-slate-800 rounded-2xl overflow-hidden transition-colors">
+            <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none">
+                <span class="text-white font-bold text-base">What are your primary working hours?</span>
+                <i class="fa-solid fa-chevron-down text-purple-400 text-sm transition-transform duration-300"></i>
+            </button>
+            <div class="hidden px-6 pb-6 text-slate-400 text-sm leading-relaxed">
+                We are generally available from Monday through Saturday. You can reach out to us via phone or email anytime, and we will respond as soon as possible.
+            </div>
+        </div>
+
+        <!-- FAQ Item 2 -->
+        <div class="bg-[#181922] border border-slate-800 rounded-2xl overflow-hidden transition-colors">
+            <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none">
+                <span class="text-white font-bold text-base">How quickly can I expect a response after sending a message?</span>
+                <i class="fa-solid fa-chevron-down text-purple-400 text-sm transition-transform duration-300"></i>
+            </button>
+            <div class="hidden px-6 pb-6 text-slate-400 text-sm leading-relaxed">
+                We usually review and reply to all inquiries within 24 hours on business days. For urgent matters, you can call us directly on our phone numbers.
+            </div>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="bg-[#181922] border border-slate-800 rounded-2xl overflow-hidden transition-colors">
+            <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none">
+                <span class="text-white font-bold text-base">Are you available for freelance projects or collaborations?</span>
+                <i class="fa-solid fa-chevron-down text-purple-400 text-sm transition-transform duration-300"></i>
+            </button>
+            <div class="hidden px-6 pb-6 text-slate-400 text-sm leading-relaxed">
+                Yes! We love working on exciting web development projects and collaborations. Feel free to send us the details through the contact form.
+            </div>
+        </div>
+
+        <!-- FAQ Item 4 -->
+        <div class="bg-[#181922] border border-slate-800 rounded-2xl overflow-hidden transition-colors">
+            <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between gap-4 focus:outline-none">
+                <span class="text-white font-bold text-base">Where are you located?</span>
+                <i class="fa-solid fa-chevron-down text-purple-400 text-sm transition-transform duration-300"></i>
+            </button>
+            <div class="hidden px-6 pb-6 text-slate-400 text-sm leading-relaxed">
+                Our base location is Okara, Pakistan, but we collaborate with clients and partners online worldwide.
+            </div>
+        </div>
+    </div>
+</section>
+<!-- RESPONSIVE FOOTER -->
+<footer class="w-full bg-[#181922] border-t border-slate-800/80 pt-16 pb-12 mt-20">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8">
+        
+        <!-- Main Footer Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start justify-between pb-12 border-b border-slate-800/80">
+            
+            <!-- Left Side: Brand Name, Logo & Slogan (4 Columns) -->
+            <div class="lg:col-span-5 space-y-4">
+                <div class="flex items-center gap-3">
+                    <!-- Welcome Page Style Logo -->
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-700 to-purple-400 flex items-center justify-center shadow-lg shadow-purple-900/30">
+                        <i class="fa-solid fa-code text-white text-base"></i>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-white">
+                        Code<span class="text-purple-400">Vibe</span>
+                    </span>
+                </div>
+                <p class="text-slate-400 text-sm max-w-sm leading-relaxed">
+                    Crafting digital experiences & clean code with passion, creativity, and modern web standards.
+                </p>
+                
+                <!-- Location Badge (Matching Image Reference) -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 text-xs shadow-inner">
+                    <i class="fa-solid fa-location-dot text-purple-400"></i>
+                    <span>Okara, Pakistan</span>
+                </div>
+            </div>
+
+            <!-- Right Side: Newsletter Subscription & Links (7 Columns) -->
+            <div class="lg:col-span-7 flex flex-col lg:items-end space-y-8">
+                
+                <!-- Email Subscription Form (Matching Image Reference) -->
+                <div class="w-full max-w-md space-y-3">
+                    <h4 class="text-white font-semibold text-sm">Subscribe to Our Newsletter</h4>
+                    <form onsubmit="handleFooterSubscribe(event)" class="flex flex-col sm:flex-row gap-2">
+                        <input type="email" required placeholder="Write Email Here" class="flex-grow bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-purple-500 transition-colors">
+                        <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold text-sm px-6 py-3 rounded-xl shadow-lg shadow-purple-600/30 transition-all">
+                            Subscribe
+                        </button>
+                    </form>
+                    <div id="footerSuccess" class="hidden text-emerald-400 text-xs font-medium">
+                        <i class="fa-solid fa-circle-check mr-1"></i> Subscribed successfully!
+                    </div>
+                </div>
+
+                <!-- Navigation Links (Home, About, Services, Project, Contact) -->
+                <div class="w-full pt-4">
+                    <ul class="flex flex-wrap items-center lg:justify-end gap-x-8 gap-y-3 text-sm font-medium text-slate-400">
+                        <li>
+                            <a href="home.html" class="hover:text-purple-400 transition-colors">Home</a>
+                        </li>
+                        <li>
+                            <a href="about.html" class="hover:text-purple-400 transition-colors">About</a>
+                        </li>
+                        <li>
+                            <a href="services.html" class="hover:text-purple-400 transition-colors">Services</a>
+                        </li>
+                        <li>
+                            <a href="project.html" class="hover:text-purple-400 transition-colors">Project</a>
+                        </li>
+                        <li>
+                            <a href="contact.html" class="hover:text-purple-400 transition-colors">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Bottom Copyright Row -->
+        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+            <p>&copy; 2026 CodeVibe. All rights reserved.</p>
+            <p class="flex items-center gap-1">
+                Built with <i class="fa-solid fa-heart text-purple-400 text-[10px]"></i> for the Web
+            </p>
+        </div>
+
+    </div>
+</footer>
+
+
+    <!-- JavaScript for Mobile Menu & Scroll Progress Outline -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            }
+        });
+
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scroll-progress').style.width = scrolled + '%';
+        });
+    </script>
+
+<!-- Scripts for Form & FAQs -->
+<script>
+    function handleSimpleForm(event) {
+        event.preventDefault();
+        const successBox = document.getElementById('formSuccess');
+        successBox.classList.remove('hidden');
+        event.target.reset();
+        setTimeout(() => {
+            successBox.classList.add('hidden');
+        }, 5000);
+    }
+
+    function toggleFaq(button) {
+        const content = button.nextElementSibling;
+        const icon = button.querySelector('fa-chevron-down, i');
+        
+        // Toggle current accordion
+        content.classList.toggle('hidden');
+        if (icon) {
+            icon.classList.toggle('rotate-180');
+        }
+    }
+</script>
+<!-- Footer Subscription Script -->
+<script>
+    function handleFooterSubscribe(event) {
+        event.preventDefault();
+        const successMsg = document.getElementById('footerSuccess');
+        successMsg.classList.remove('hidden');
+        event.target.reset();
+        setTimeout(() => {
+            successMsg.classList.add('hidden');
+        }, 4000);
+    }
+</script>
+</body>
+</html>

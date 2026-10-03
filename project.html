@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - CodeVibe</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        customBg: '#0f1015',
+                        cardBg: '#181922',
+                        purpleAccent: '#9333ea',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #0f1015;
+            color: #f8fafc;
+            height: 250vh; /* Scroll check karne ke liye extra height */
+        }
+    </style>
+</head>
+<body class="selection:bg-purple-500 selection:text-white">
+
+    <!-- Sticky Dual-Tier Navbar -->
+    <header id="navbar" class="sticky top-0 z-50 pt-4 px-4 sm:px-8 bg-[#0f1015]/95 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto flex flex-col items-center">
+            
+            <!-- UPPER LAYER: Tab-Style Menu Bar (Project Active) -->
+            <nav class="hidden md:flex items-center justify-center bg-slate-900/90 rounded-t-xl p-1.5 gap-1 border-t border-x border-slate-800 shadow-lg">
+                <a href="home.html" class="px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-all">Home</a>
+                <a href="about.html" class="px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-all">About</a>
+                <a href="services.html" class="px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-all">Services</a>
+                <a href="project.html" class="px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-white bg-purple-600 rounded-lg shadow-md transition-all">Project</a>
+                <a href="contact.html" class="px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-all">Contact</a>
+            </nav>
+
+            <!-- LOWER LAYER: Brand Name Logo & Contact Us Button Box -->
+            <div class="w-full bg-[#16171f] border border-slate-800 rounded-2xl px-6 py-4 flex items-center justify-between shadow-2xl relative">
+                
+                <!-- Logo & Brand Name -->
+                <a href="home.html" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-700 to-purple-400 flex items-center justify-center shadow-lg shadow-purple-950 group-hover:scale-105 transition-transform duration-300">
+                        <i class="fa-solid fa-code text-white text-lg"></i>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-white">
+                        Code<span class="text-purple-400">Vibe</span>
+                    </span>
+                </a>
+
+                <!-- Desktop Contact Us Button -->
+                <div class="hidden md:block">
+                    <a href="contact.html" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium text-sm shadow-lg shadow-purple-600/20 hover:shadow-purple-600/40 hover:scale-105 transition-all duration-300">
+                        Contact Us
+                    </a>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-slate-300 hover:text-white focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl transition-transform duration-300" id="menu-icon"></i>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Mobile Dropdown Menu (Project Active) -->
+            <div id="mobile-menu" class="hidden md:hidden w-full bg-[#16171f] border-x border-b border-slate-800 rounded-b-2xl px-6 py-5 space-y-3 shadow-2xl mt-[-8px] pt-6 z-[-1]">
+                <a href="home.html" class="block text-sm font-semibold uppercase tracking-wider text-slate-300 hover:text-purple-400 py-1">Home</a>
+                <a href="about.html" class="block text-sm font-semibold uppercase tracking-wider text-slate-300 hover:text-purple-400 py-1">About</a>
+                <a href="services.html" class="block text-sm font-semibold uppercase tracking-wider text-slate-300 hover:text-purple-400 py-1">Services</a>
+                <a href="project.html" class="block text-sm font-semibold uppercase tracking-wider text-purple-400 py-1">Project</a>
+                <a href="contact.html" class="block text-sm font-semibold uppercase tracking-wider text-slate-300 hover:text-purple-400 py-1">Contact</a>
+                <div class="pt-2">
+                    <a href="contact.html" class="block text-center w-full py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium text-sm">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Scroll Progress Outline Border -->
+        <div class="w-full max-w-6xl mx-auto h-[2px] bg-slate-800 mt-4">
+            <div id="scroll-progress" class="h-full bg-gradient-to-r from-purple-500 to-indigo-500 w-0 transition-all duration-100"></div>
+        </div>
+    </header>
+
+    <!-- PROJECTS PAGE HERO SECTION -->
+<section class="max-w-5xl mx-auto px-4 sm:px-8 pt-20 pb-16 text-center space-y-6">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs sm:text-sm font-semibold tracking-wide backdrop-blur-md">
+        <i class="fa-solid fa-layer-group"></i> Our Complete Portfolio
+    </div>
+    
+    <h1 class="text-4xl sm:text-6xl font-black text-white tracking-tight leading-tight">
+        Explore All Our <br>
+        <span class="bg-gradient-to-r from-purple-400 via-fuchsia-300 to-indigo-300 bg-clip-text text-transparent">
+            Digital Masterpieces
+        </span>
+    </h1>
+
+    <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+        Browse through our extensive collection of high-performance web engineering projects built with breathtaking visuals, clean layouts, and flawless responsiveness.
+    </p>
+
+    <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+        <a href="#all-projects" class="py-3 px-8 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-sm tracking-wide shadow-lg shadow-purple-600/30 transition-all">
+            View All Projects
+        </a>
+        <a href="#faq-section" class="py-3 px-8 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-semibold text-sm tracking-wide transition-all">
+            Read FAQs
+        </a>
+    </div>
+</section>
+
+<!-- ALL 20 PROJECTS PREVIEW SECTION -->
+<section id="all-projects" class="max-w-7xl mx-auto px-4 sm:px-8 py-16 border-t border-slate-800/80">
+    
+    <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs sm:text-sm font-semibold tracking-wide backdrop-blur-md">
+            <i class="fa-solid fa-code"></i> Showcase Grid
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+            Featured <span class="bg-gradient-to-r from-purple-400 via-fuchsia-300 to-indigo-300 bg-clip-text text-transparent">Creations</span>
+        </h2>
+        <p class="text-slate-400 text-base sm:text-lg leading-relaxed">
+            Discover our comprehensive range of web applications and design layouts crafted for perfection.
+        </p>
+    </div>
+
+    <!-- 20 Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
+        
+        <!-- Project 1 -->
+        <div class="space-y-6 group">
+            <div class="relative">
+                <div class="absolute inset-0 bg-purple-600/30 rounded-2xl translate-x-3 translate-y-3 transition-transform duration-300 group-hover:translate-x-4 group-hover:translate-y-4"></div>
+                <div class="relative w-full h-64 rounded-2xl overflow-hidden border-2 border-slate-700 bg-[#181922] shadow-2xl">
+                    <img src="p1.jpeg" alt="3D Agency Website" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+            <div class="space-y-3 pt-2">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold text-white tracking-wide">3D Agency Website</h3>
+                    <a href="https://3d-agency-website.netlify.app" target="_blank" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-semibold hover:bg-purple-600 hover:text-white transition-all">
+                        Visit <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                    </a>
+                </div>
+                <p class="text-slate-400 text-sm">Immersive 3D web experience with modern visual effects and clean layouts.</p>
+                <div class="flex items-center gap-3 pt-2">
+                    <button onclick="openModal('3D Agency Website', 'Immersive 3D web experience featuring interactive graphics, dynamic animations, and clean responsive layouts tailored for modern digital agencies.', 'https://3d-agency-website.netlify.app', 'p1.jpeg')" class="flex-1 py-2 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold tracking-wide transition-all shadow-lg shadow-purple-600/20">
+                        Explore More
+                    </button>
+                    <a href="https://3d-agency-website.netlify.app" target="_blank" class="flex-1 py-2 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-semibold tracking-wide text-center transition-all">
+                        Visit Site
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="space-y-6 group">
+            <div class="relative">
+                <div class="absolute inset-0 bg-purple-600/30 rounded-2xl translate-x-3 translate-y-3 transition-transform duration-300 group-hover:translate-x-4 group-hover:translate-y-4"></div>
+                <div class="relative w-full h-64 rounded-2xl overflow-hidden border-2 border-slate-700 bg-[#181922] shadow-2xl">
+                    <img src="p3.jpeg" alt="Punjab Admission Centre" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+            <div class="space-y-3 pt-2">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold text-white tracking-wide">Punjab Admission Centre</h3>
+                    <a href="http://www.punjabadmissioncentre.com" target="_blank" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-semibold hover:bg-purple-600 hover:text-white transition-all">
+                        Visit <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                    </a>
+                </div>
+                <p class="text-slate-400 text-sm">Educational portal designed for streamlined student admissions and management.</p>
+                <div class="flex items-center gap-3 pt-2">
+                    <button onclick="openModal('Punjab Admission Centre', 'Comprehensive educational portal engineered for streamlined student admissions, course registrations, and institutional record management.', 'http://www.punjabadmissioncentre.com', 'p2.jpeg')" class="flex-1 py-2 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold tracking-wide transition-all shadow-lg shadow-purple-600/20">
+                        Explore More
+                    </button>
+                    <a href="http://www.punjabadmissioncentre.com" target="_blank" class="flex-1 py-2 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-semibold tracking-wide text-center transition-all">
+                        Visit Site
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="space-y-6 group">
+            <div class="relative">
+                <div class="absolute inset-0 bg-purple-600/30 rounded-2xl translate-x-3 translate-y-3 transition-transform duration-300 group-hover:translate-x-4 group-hover:translate-y-4"></div>
+                <div class="relative w-full h-64 rounded-2xl overflow-hidden border-2 border-slate-700 bg-[#181922] shadow-2xl">
+                    <img src="p2.jpeg" alt="Dynamic Web Platform" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+            <div class="space-y-3 pt-2">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold text-white tracking-wide">Dynamic Web Platform</h3>
+                    <a href="https://gleeful-pasca-d83f55.netlify.app/" target="_blank" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-semibold hover:bg-purple-600 hover:text-white transition-all">
+                        Visit <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                    </a>
+                </div>
+                <p class="text-slate-400 text-sm">Responsive utility application built for smooth user interactions and fast loads.</p>
+                <div class="flex items-center gap-3 pt-2">
+                    <button onclick="openModal('Dynamic Web Platform', 'Responsive utility application built for smooth user interactions, high performance, and rapid page loading speeds.', 'https://gleeful-pasca-d83f55.netlify.app/', 'p3.jpeg')" class="flex-1 py-2 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold tracking-wide transition-all shadow-lg shadow-purple-600/20">
+                        Explore More
+                    </button>
+                    <a href="https://gleeful-pasca-d83f55.netlify.app/" target="_blank" class="flex-1 py-2 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-semibold tracking-wide text-center transition-all">
+                        Visit Site
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="space-y-6 group">
+            <div class="relative">
+                <div class="absolute inset-0 bg-purple-600/30 rounded-2xl translate-x-3 translate-y-3 transition-transform duration-300 group-hover:translate-x-4 group-hover:translate-y-4"></div>
+                <div class="relative w-full h-64 rounded-2xl overflow-hidden border-2 border-slate-700 bg-[#181922] shadow-2xl">
+                    <img src="p4.jpeg" alt="Creative Portfolio UI" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+            <div class="space-y-3 pt-2">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold text-white tracking-wide">Creative Portfolio UI</h3>
+                    <a href="https://lively-boba-ff6fea.netlify.app/" target="_blank" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-semibold hover:bg-purple-600 hover:text-white transition-all">
+                        Visit <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                    </a>
+                </div>
+                <p class="text-slate-400 text-sm">High-end creative portfolio template highlighting custom graphic styles.</p>
+                <div class="flex items-center gap-3 pt-2">
+                    <button onclick="openModal('Creative Portfolio UI', 'High-end creative portfolio template highlighting custom graphic designs, interactive components, and clean typography.', 'https://lively-boba-ff6fea.netlify.app/', 'p4.jpeg')" class="flex-1 py-2 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold tracking-wide transition-all shadow-lg shadow-purple-600/20">
+                        Explore More
+                    </button>
+                    <a href="https://lively-boba-ff6fea.netlify.app/" target="_blank" class="flex-1 py-2 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-semibold tracking-wide text-center transition-all">
+                        Visit Site
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="space-y-6 group">
+            <div class="relative">
+                <div class="absolute inset-0 bg-purple-600/30 rounded-2xl translate-x-3 translate-y-3 transition-transform duration-300 group-hover:translate-x-4 group-hover:translate-y-4"></div>
+                <div class="relative w-full h-64 rounded-2xl overflow-hidden border-2 border-slate-700 bg-[#181922] shadow-2xl">
+                    <img src="p5.jpeg" alt="Enterprise Web Suite" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+            <div class="space-y-3 pt-2">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold text-white tracking-wide">Enterprise Web Suite</h3>
+                    <a href="https://relaxed-moxie-468a66.netlify.app/" target="_blank" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-semibold hover:bg-purple-600 hover:text-white transition-all">
+                        Visit <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                    </a>
+                </div>
+                <p class="text-slate-400 text-sm">Robust corporate dashboard and business management layout.</p>
+                <div class="flex items-center gap-3 pt-2">
+                    <button onclick="openModal('Enterprise Web Suite', 'Robust corporate dashboard and business management layout designed for tracking operational metrics and workflow efficiency.', 'https://relaxed-moxie-468a66.netlify.app/', 'p5.jpeg')" class="flex-1 py-2 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold tracking-wide transition-all shadow-lg shadow-purple-600/20">
+                        Explore More
+                    </button>
+                    <a href="https://relaxed-moxie-468a66.netlify.app/" target="_blank" class="flex-1 py-2 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-semibold tracking-wide text-center transition-all">
+                        Visit Site
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="space-y-6 group">
+            <div class="relative">
+                <div class="absolute inset-0 bg-purple-600/30 rounded-2xl translate-x-3 translate-y-3 transition-transform duration-300 group-hover:translate-x-4 group-hover:translate-y-4"></div>
+                <div class="relative w-full h-64 rounded-2xl overflow-hidden border-2 border-slate-700 bg-[#181922] shadow-2xl">
+                    <img src="p6.jpeg" alt="Digital Web Showcase" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+            <div class="space-y-3 pt-2">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold text-white tracking-wide">Digital Web Showcase</h3>
+                    <a href="https://frabjous-trifle-2e88d0.netlify.app/" target="_blank" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-semibold hover:bg-purple-600 hover:text-white transition-all">
+                        Visit <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                    </a>
+                </div>
+                <p class="text-slate-400 text-sm">Sleek interactive web presentation featuring modern transitions and components.</p>
+                <div class="flex items-center gap-3 pt-2">
+                    <button onclick="openModal('Digital Web Showcase', 'Sleek interactive web presentation featuring modern page transitions, modular components, and engaging visual layouts.', 'https://frabjous-trifle-2e88d0.netlify.app/', 'p6.jpeg')" class="flex-1 py-2 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold tracking-wide transition-all shadow-lg shadow-purple-600/20">
+                        Explore More
+                    </button>
+                    <a href="https://frabjous-trifle-2e88d0.netlify.app/" target="_blank" class="flex-1 py-2 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-semibold tracking-wide text-center transition-all">
+                        Visit Site
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 7 -->
+        <div class="space-y-6 group">
+            <div class="relative">
+                <div class="absolute inset-0 bg-purple-600/30 rounded-2xl translate-x-3 translate-y-3 transition-transform duration-300 group-hover:translate-x-4 group-hover:translate-y-4"></div>
+                <div class="relative w-full h-64 rounded-2xl overflow-hidden border-2 border-slate-700 bg-[#181922] shadow-2xl">
+                    <img src="p7.jpeg" alt="Legendary Web App" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+            <div class="space-y-3 pt-2">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold text-white tracking-wide">Valkyrie Digital UI</h3>
+                    <a href="https://legendary-valkyrie-2d53d4.netlify.app/" target="_blank" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-semibold hover:bg-purple-600 hover:text-white transition-all">
+                        Visit <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                    </a>
+                </div>
+                <p class="text-slate-400 text-sm">High-impact brand concept interface focused on supreme user engagement.</p>
+                <div class="flex items-center gap-3 pt-2">
+                    <button onclick="openModal('Valkyrie Digital UI', 'High-impact brand concept interface focused on supreme user engagement, custom typography, and dynamic visual design elements.', 'https://legendary-valkyrie-2d53d4.netlify.app/', 'p7.jpeg')" class="flex-1 py-2 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold tracking-wide transition-all shadow-lg shadow-purple-600/20">
+                        Explore More
+                    </button>
+                    <a href="https://legendary-valkyrie-2d53d4.netlify.app/" target="_blank" class="flex-1 py-2 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-semibold tracking-wide text-center transition-all">
+                        Visit Site
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 8 -->
+        <div class="space-y-6 group">
+            <div class="relative">
+                <div class="absolute inset-0 bg-purple-600/30 rounded-2xl translate-x-3 translate-y-3 transition-transform duration-300 group-hover:translate-x-4 group-hover:translate-y-4"></div>
+                <div class="relative w-full h-64 rounded-2xl overflow-hidden border-2 border-slate-700 bg-[#181922] shadow-2xl">
+                    <img src="p8.jpeg" alt="Animated Mochi" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+            <div class="space-y-3 pt-2">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold text-white tracking-wide">Animated website</h3>
+                    <a href="https://animated-mochi-340782.netlify.app/" target="_blank" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-semibold hover:bg-purple-600 hover:text-white transition-all">
+                        Visit <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                    </a>
+                </div>
+                <p class="text-slate-400 text-sm">Playful interactive web application with smooth micro-animations.</p>
+                <div class="flex items-center gap-3 pt-2">
+                    <button onclick="openModal('Animated website Hub', 'Playful interactive web application featuring smooth micro-animations, vibrant color palettes, and delightful user navigation.', 'https://animated-mochi-340782.netlify.app/', 'p8.jpeg')" class="flex-1 py-2 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold tracking-wide transition-all shadow-lg shadow-purple-600/20">
+                        Explore More
+                    </button>
+                    <a href="https://animated-mochi-340782.netlify.app/" target="_blank" class="flex-1 py-2 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-semibold tracking-wide text-center transition-all">
+                        Visit Site
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 9 -->
+        <div class="space-y-6 group">
+            <div class="relative">
+                <div class="absolute inset-0 bg-purple-600/30 rounded-2xl translate-x-3 translate-y-3 transition-transform duration-300 group-hover:translate-x-4 group-hover:translate-y-4"></div>
+                <div class="relative w-full h-64 rounded-2xl overflow-hidden border-2 border-slate-700 bg-[#181922] shadow-2xl">
+                    <img src="p9.jpeg" alt="Aesthetic Faloodeh" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+            <div class="space-y-3 pt-2">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold text-white tracking-wide">Aesthetic website</h3>
+                    <a href="https://aesthetic-faloodeh-261438.netlify.app/" target="_blank" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-semibold hover:bg-purple-600 hover:text-white transition-all">
+                        Visit <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                    </a>
+                </div>
+                <p class="text-slate-400 text-sm">Minimalistlifestyle storefront layout with elegant themes.</p>
+                <div class="flex items-center gap-3 pt-2">
+                    <button onclick="openModal('Aesthetic website', 'Minimalist   lifestyle storefront layout built with elegant color styling, clean grid setups, and responsive presentation.', 'https://aesthetic-faloodeh-261438.netlify.app/', 'p9.jpeg')" class="flex-1 py-2 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold tracking-wide transition-all shadow-lg shadow-purple-600/20">
+                        Explore More
+                    </button>
+                    <a href="https://aesthetic-faloodeh-261438.netlify.app/" target="_blank" class="flex-1 py-2 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-semibold tracking-wide text-center transition-all">
+                        Visit Site
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 10 -->
+        <div class="space-y-6 group">
+            <div class="relative">
+                <div class="absolute inset-0 bg-purple-600/30 rounded-2xl translate-x-3 translate-y-3 transition-transform duration-300 group-hover:translate-x-4 group-hover:translate-y-4"></div>
+                <div class="relative w-full h-64 rounded-2xl overflow-hidden border-2 border-slate-700 bg-[#181922] shadow-2xl">
+                    <img src="p10.jpeg" alt="Zippy Lolly" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+            <div class="space-y-3 pt-2">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold text-white tracking-wide">modern  website</h3>
+                    <a href="https://zippy-lolly-51760f.netlify.app/" target="_blank" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-semibold hover:bg-purple-600 hover:text-white transition-all">
+                        Visit <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                    </a>
+                </div>
+                <p class="text-slate-400 text-sm">Dynamic web tool designed for fast performance and modern utility.</p>
+                <div class="flex items-center gap-3 pt-2">
+                    <button onclick="openModal('modern uitility', 'Dynamic web utility designed for fast performance, responsive layouts, and clean interactive control elements.', 'https://zippy-lolly-51760f.netlify.app/', 'p10.jpeg')" class="flex-1 py-2 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold tracking-wide transition-all shadow-lg shadow-purple-600/20">
+                        Explore More
+                    </button>
+                    <a href="https://zippy-lolly-51760f.netlify.app/" target="_blank" class="flex-1 py-2 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-semibold tracking-wide text-center transition-all">
+                        Visit Site
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 11 -->
+        <div class="space-y-6 group">
+            <div class="relative">
+                <div class="absolute inset-0 bg-purple-600/30 rounded-2xl translate-x-3 translate-y-3 transition-transform duration-300 group-hover:translate-x-4 group-hover:translate-y-4"></div>
+                <div class="relative w-full h-64 rounded-2xl overflow-hidden border-2 border-slate-700 bg-[#181922] shadow-2xl">
+                    <img src="p11.jpeg" alt="Visionary Sfogliatella" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+            <div class="space-y-3 pt-2">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold text-white tracking-wide">luxury design</h3>
+                    <a href="https://visionary-sfogliatella-73edd1.netlify.app/" target="_blank" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-semibold hover:bg-purple-600 hover:text-white transition-all">
+                        Visit <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                    </a>
+                </div>
+                <p class="text-slate-400 text-sm">Artisanal web showcase emphasizing luxury design and structure.</p>
+                <div class="flex items-center gap-3 pt-2">
+                    <button onclick="openModal('Visionary Sfogliatella', 'Artisanal web showcase emphasizing luxury design, balanced structural grids, and stunning visual presentation.', 'https://visionary-sfogliatella-73edd1.netlify.app/', 'p11.jpeg')" class="flex-1 py-2 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold tracking-wide transition-all shadow-lg shadow-purple-600/20">
+                        Explore More
+                    </button>
+                    <a href="https://visionary-sfogliatella-73edd1.netlify.app/" target="_blank" class="flex-1 py-2 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-semibold tracking-wide text-center transition-all">
+                        Visit Site
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 12 -->
+        <div class="space-y-6 group">
+            <div class="relative">
+                <div class="absolute inset-0 bg-purple-600/30 rounded-2xl translate-x-3 translate-y-3 transition-transform duration-300 group-hover:translate-x-4 group-hover:translate-y-4"></div>
+                <div class="relative w-full h-64 rounded-2xl overflow-hidden border-2 border-slate-700 bg-[#181922] shadow-2xl">
+                    <img src="p12.jpeg" alt="Effortless Melba" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+            <div class="space-y-3 pt-2">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold text-white tracking-wide">landing page website</h3>
+                    <a href="https://effortless-melba-3bacd5.netlify.app/" target="_blank" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-semibold hover:bg-purple-600 hover:text-white transition-all">
+                        Visit <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                    </a>
+                </div>
+                <p class="text-slate-400 text-sm">Streamlined business landing page featuring clean calls to action.</p>
+                <div class="flex items-center gap-3 pt-2">
+                    <button onclick="openModal('Effortless Melba', 'Streamlined business landing page featuring clean calls to action, professional typography, and responsive grid layouts.', 'https://effortless-melba-3bacd5.netlify.app/', 'p12.jpeg')" class="flex-1 py-2 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold tracking-wide transition-all shadow-lg shadow-purple-600/20">
+                        Explore More
+                    </button>
+                    <a href="https://effortless-melba-3bacd5.netlify.app/" target="_blank" class="flex-1 py-2 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-semibold tracking-wide text-center transition-all">
+                        Visit Site
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 13 -->
+        <div class="space-y-6 group">
+            <div class="relative">
+                <div class="absolute inset-0 bg-purple-600/30 rounded-2xl translate-x-3 translate-y-3 transition-transform duration-300 group-hover:translate-x-4 group-hover:translate-y-4"></div>
+                <div class="relative w-full h-64 rounded-2xl overflow-hidden border-2 border-slate-700 bg-[#181922] shadow-2xl">
+                    <img src="p13.jpeg" alt="Earnest Genie" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+            <div class="space-y-3 pt-2">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold text-white tracking-wide">interactive task oriented website</h3>
+                    <a href="https://earnest-genie-7614c8.netlify.app/" target="_blank" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-semibold hover:bg-purple-600 hover:text-white transition-all">
+                        Visit <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                    </a>
+                </div>
+                <p class="text-slate-400 text-sm">Interactive task-oriented web platform built for efficiency.</p>
+                <div class="flex items-center gap-3 pt-2">
+                    <button onclick="openModal('Earnest Genie Portal', 'Interactive task-oriented web platform built for seamless user workflow, high utility, and clean component structures.', 'https://earnest-genie-7614c8.netlify.app/', 'p13.jpeg')" class="flex-1 py-2 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold tracking-wide transition-all shadow-lg shadow-purple-600/20">
+                        Explore More
+                    </button>
+                    <a href="https://earnest-genie-7614c8.netlify.app/" target="_blank" class="flex-1 py-2 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-semibold tracking-wide text-center transition-all">
+                        Visit Site
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 14 -->
+        <div class="space-y-6 group">
+            <div class="relative">
+                <div class="absolute inset-0 bg-purple-600/30 rounded-2xl translate-x-3 translate-y-3 transition-transform duration-300 group-hover:translate-x-4 group-hover:translate-y-4"></div>
+                <div class="relative w-full h-64 rounded-2xl overflow-hidden border-2 border-slate-700 bg-[#181922] shadow-2xl">
+                    <img src="p14.jpeg" alt="Loquacious Froyo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+            <div class="space-y-3 pt-2">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold text-white tracking-wide">Modern Styling Website</h3>
+                    <a href="https://loquacious-froyo-c10f15.netlify.app/" target="_blank" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-semibold hover:bg-purple-600 hover:text-white transition-all">
+                        Visit <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                    </a>
+                </div>
+                <p class="text-slate-400 text-sm">Creative blog and social interface with modern card styling.</p>
+                <div class="flex items-center gap-3 pt-2">
+                    <button onclick="openModal('Modern Styling Website', 'Creative blog and social interface featuring modern card styling, engaging content blocks, and fully responsive navigation.', 'https://loquacious-froyo-c10f15.netlify.app/', 'p14.jpeg')" class="flex-1 py-2 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold tracking-wide transition-all shadow-lg shadow-purple-600/20">
+                        Explore More
+                    </button>
+                    <a href="https://loquacious-froyo-c10f15.netlify.app/" target="_blank" class="flex-1 py-2 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-semibold tracking-wide text-center transition-all">
+                        Visit Site
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 15 -->
+        <div class="space-y-6 group">
+            <div class="relative">
+                <div class="absolute inset-0 bg-purple-600/30 rounded-2xl translate-x-3 translate-y-3 transition-transform duration-300 group-hover:translate-x-4 group-hover:translate-y-4"></div>
+                <div class="relative w-full h-64 rounded-2xl overflow-hidden border-2 border-slate-700 bg-[#181922] shadow-2xl">
+                    <img src="p15.jpeg" alt="Luminous Fudge" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+            <div class="space-y-3 pt-2">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold text-white tracking-wide">Modern vibrant website</h3>
+                    <a href="https://luminous-fudge-c27ead.netlify.app/" target="_blank" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-semibold hover:bg-purple-600 hover:text-white transition-all">
+                        Visit <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                    </a>
+                </div>
+                <p class="text-slate-400 text-sm">Vibrant web presentation featuring dynamic gradients and glowing components.</p>
+                <div class="flex items-center gap-3 pt-2">
+                    <button onclick="openModal('Luminous Fudge App', 'Vibrant web presentation featuring dynamic gradients, glowing visual components, and smooth interactive UI behaviors.', 'https://luminous-fudge-c27ead.netlify.app/', 'p15.jpeg')" class="flex-1 py-2 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold tracking-wide transition-all shadow-lg shadow-purple-600/20">
+                        Explore More
+                    </button>
+                    <a href="https://luminous-fudge-c27ead.netlify.app/" target="_blank" class="flex-1 py-2 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-semibold tracking-wide text-center transition-all">
+                        Visit Site
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 17 -->
+        <div class="space-y-6 group">
+            <div class="relative">
+                <div class="absolute inset-0 bg-purple-600/30 rounded-2xl translate-x-3 translate-y-3 transition-transform duration-300 group-hover:translate-x-4 group-hover:translate-y-4"></div>
+                <div class="relative w-full h-64 rounded-2xl overflow-hidden border-2 border-slate-700 bg-[#181922] shadow-2xl">
+                    <img src="p17.jpeg" alt="Grand Liger" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+            <div class="space-y-3 pt-2">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold text-white tracking-wide">Grand Liger Showcase</h3>
+                    <a href="https://grand-liger-c88aac.netlify.app/" target="_blank" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-semibold hover:bg-purple-600 hover:text-white transition-all">
+                        Visit <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                    </a>
+                </div>
+                <p class="text-slate-400 text-sm">Bold corporate website template engineered for maximum visual impact.</p>
+                <div class="flex items-center gap-3 pt-2">
+                    <button onclick="openModal('Grand Liger Showcase', 'Bold corporate website template engineered for maximum visual impact, structured sections, and rapid loading speeds.', 'https://grand-liger-c88aac.netlify.app/', 'p17jpeg')" class="flex-1 py-2 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold tracking-wide transition-all shadow-lg shadow-purple-600/20">
+                        Explore More
+                    </button>
+                    <a href="https://grand-liger-c88aac.netlify.app/" target="_blank" class="flex-1 py-2 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-semibold tracking-wide text-center transition-all">
+                        Visit Site
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 18 -->
+        <div class="space-y-6 group">
+            <div class="relative">
+                <div class="absolute inset-0 bg-purple-600/30 rounded-2xl translate-x-3 translate-y-3 transition-transform duration-300 group-hover:translate-x-4 group-hover:translate-y-4"></div>
+                <div class="relative w-full h-64 rounded-2xl overflow-hidden border-2 border-slate-700 bg-[#181922] shadow-2xl">
+                    <img src="p18.jpeg" alt="Incandescent Cheesecake" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+            <div class="space-y-3 pt-2">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold text-white tracking-wide">Incandescent nutrition website</h3>
+                    <a href="https://incandescent-cheesecake-dda892.netlify.app/" target="_blank" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-semibold hover:bg-purple-600 hover:text-white transition-all">
+                        Visit <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                    </a>
+                </div>
+                <p class="text-slate-400 text-sm">Creative culinary landing page with responsive photo galleries.</p>
+                <div class="flex items-center gap-3 pt-2">
+                    <button onclick="openModal('Incandescent Cheesecake', 'Creative culinary landing page featuring responsive photo galleries, warm color palettes, and immersive design layouts.', 'https://incandescent-cheesecake-dda892.netlify.app/', 'p18.jpeg')" class="flex-1 py-2 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold tracking-wide transition-all shadow-lg shadow-purple-600/20">
+                        Explore More
+                    </button>
+                    <a href="https://incandescent-cheesecake-dda892.netlify.app/" target="_blank" class="flex-1 py-2 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-semibold tracking-wide text-center transition-all">
+                        Visit Site
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 19 -->
+        <div class="space-y-6 group">
+            <div class="relative">
+                <div class="absolute inset-0 bg-purple-600/30 rounded-2xl translate-x-3 translate-y-3 transition-transform duration-300 group-hover:translate-x-4 group-hover:translate-y-4"></div>
+                <div class="relative w-full h-64 rounded-2xl overflow-hidden border-2 border-slate-700 bg-[#181922] shadow-2xl">
+                    <img src="p19.jpeg" alt="Fish Website Pro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+            <div class="space-y-3 pt-2">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold text-white tracking-wide">Fish Website Pro</h3>
+                    <a href="https://fish-website-pro.netlify.app" target="_blank" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-semibold hover:bg-purple-600 hover:text-white transition-all">
+                        Visit <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                    </a>
+                </div>
+                <p class="text-slate-400 text-sm">Specialized aquatic theme portal with clean layout architecture.</p>
+                <div class="flex items-center gap-3 pt-2">
+                    <button onclick="openModal('Fish Website Pro', 'Specialized aquatic theme portal featuring clean layout architecture, informative sections, and smooth responsive design.', 'https://fish-website-pro.netlify.app', 'p19.jpeg')" class="flex-1 py-2 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold tracking-wide transition-all shadow-lg shadow-purple-600/20">
+                        Explore More
+                    </button>
+                    <a href="https://fish-website-pro.netlify.app" target="_blank" class="flex-1 py-2 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-semibold tracking-wide text-center transition-all">
+                        Visit Site
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 20 -->
+        <div class="space-y-6 group">
+            <div class="relative">
+                <div class="absolute inset-0 bg-purple-600/30 rounded-2xl translate-x-3 translate-y-3 transition-transform duration-300 group-hover:translate-x-4 group-hover:translate-y-4"></div>
+                <div class="relative w-full h-64 rounded-2xl overflow-hidden border-2 border-slate-700 bg-[#181922] shadow-2xl">
+                    <img src="p20.jpeg" alt="AI Web 3D" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+            </div>
+            <div class="space-y-3 pt-2">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-xl font-bold text-white tracking-wide">AI Web 3D Portal</h3>
+                    <a href="https://ai-web-3d.netlify.app" target="_blank" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-semibold hover:bg-purple-600 hover:text-white transition-all">
+                        Visit <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                    </a>
+                </div>
+                <p class="text-slate-400 text-sm">Futuristic artificial intelligence web portal with 3D components.</p>
+                <div class="flex items-center gap-3 pt-2">
+                    <button onclick="openModal('AI Web 3D Portal', 'Futuristic artificial intelligence web portal integrating 3D components, modern visual grids, and advanced UI interactions.', 'https://ai-web-3d.netlify.app', 'p20.jpeg')" class="flex-1 py-2 px-4 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold tracking-wide transition-all shadow-lg shadow-purple-600/20">
+                        Explore More
+                    </button>
+                    <a href="https://ai-web-3d.netlify.app" target="_blank" class="flex-1 py-2 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white text-xs font-semibold tracking-wide text-center transition-all">
+                        Visit Site
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- FAQ ACCORDION SECTION -->
+<section id="faq-section" class="max-w-4xl mx-auto px-4 sm:px-8 py-20 border-t border-slate-800/80">
+    <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs sm:text-sm font-semibold tracking-wide backdrop-blur-md">
+            <i class="fa-solid fa-circle-question"></i> Got Questions?
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+            Frequently Asked <span class="bg-gradient-to-r from-purple-400 via-fuchsia-300 to-indigo-300 bg-clip-text text-transparent">Questions</span>
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base">
+            Find answers to common queries regarding our web engineering projects, collaboration processes, and custom development services.
+        </p>
+    </div>
+
+    <!-- Accordion List -->
+    <div class="space-y-4">
+        
+        <!-- FAQ 1 -->
+        <div class="bg-[#181922] border border-slate-800 rounded-2xl overflow-hidden transition-all">
+            <button onclick="toggleFaq(1)" class="w-full flex items-center justify-between p-6 text-left focus:outline-none">
+                <span class="text-lg font-bold text-white">How are your web projects structured and built?</span>
+                <i id="faqIcon1" class="fa-solid fa-plus text-purple-400 transition-transform duration-300"></i>
+            </button>
+            <div id="faqContent1" class="hidden px-6 pb-6 text-slate-400 text-sm sm:text-base leading-relaxed border-t border-slate-800/60 pt-4">
+                All our web projects are built with custom design patterns, fully responsive layouts optimized for mobile and desktop screens, and rigorous testing to ensure lightning-fast performance.
+            </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="bg-[#181922] border border-slate-800 rounded-2xl overflow-hidden transition-all">
+            <button onclick="toggleFaq(2)" class="w-full flex items-center justify-between p-6 text-left focus:outline-none">
+                <span class="text-lg font-bold text-white">Can I request custom modifications to a featured project?</span>
+                <i id="faqIcon2" class="fa-solid fa-plus text-purple-400 transition-transform duration-300"></i>
+            </button>
+            <div id="faqContent2" class="hidden px-6 pb-6 text-slate-400 text-sm sm:text-base leading-relaxed border-t border-slate-800/60 pt-4">
+                Yes! We offer tailored customization services. You can explore our designs and reach out to our team to request specific features, color adjustments, or brand integration.
+            </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="bg-[#181922] border border-slate-800 rounded-2xl overflow-hidden transition-all">
+            <button onclick="toggleFaq(3)" class="w-full flex items-center justify-between p-6 text-left focus:outline-none">
+                <span class="text-lg font-bold text-white">Are all preview links live and fully functional?</span>
+                <i id="faqIcon3" class="fa-solid fa-plus text-purple-400 transition-transform duration-300"></i>
+            </button>
+            <div id="faqContent3" class="hidden px-6 pb-6 text-slate-400 text-sm sm:text-base leading-relaxed border-t border-slate-800/60 pt-4">
+                Absolutely. Every "Visit Site" button directs you to a fully deployed live version of the project hosted securely on high-speed servers.
+            </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="bg-[#181922] border border-slate-800 rounded-2xl overflow-hidden transition-all">
+            <button onclick="toggleFaq(4)" class="w-full flex items-center justify-between p-6 text-left focus:outline-none">
+                <span class="text-lg font-bold text-white">How can we collaborate on a new website development project?</span>
+                <i id="faqIcon4" class="fa-solid fa-plus text-purple-400 transition-transform duration-300"></i>
+            </button>
+            <div id="faqContent4" class="hidden px-6 pb-6 text-slate-400 text-sm sm:text-base leading-relaxed border-t border-slate-800/60 pt-4">
+                You can reach out through our contact page or drop us a message. We collaborate closely with clients to bring unique digital visions to life from concept to deployment.
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="max-w-7xl mx-auto px-4 sm:px-8 py-16">
+    <div class="relative bg-gradient-to-r from-purple-900/40 via-[#181922] to-indigo-900/40 border border-purple-500/30 rounded-3xl p-8 sm:p-16 text-center space-y-6 overflow-hidden shadow-2xl">
+        <div class="absolute -right-20 -top-20 w-64 h-64 bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-xs sm:text-sm font-semibold tracking-wide">
+            <i class="fa-solid fa-rocket"></i> Let's Build Together
+        </div>
+
+        <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight">
+            Ready to Start Your <span class="bg-gradient-to-r from-purple-400 via-fuchsia-300 to-indigo-300 bg-clip-text text-transparent">Next Big Project?</span>
+        </h2>
+
+        <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            Partner with our expert developers to create breathtaking web experiences tailored specifically for your brand and audience.
+        </p>
+
+        <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
+            <a href="#all-projects" class="py-3.5 px-8 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-sm tracking-wide shadow-lg shadow-purple-600/30 transition-all">
+                Explore Projects
+            </a>
+            <a href="#faq-section" class="py-3.5 px-8 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-semibold text-sm tracking-wide transition-all">
+                Learn More
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECT DETAIL MODAL -->
+<div id="projectModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+    <div class="relative bg-[#181922] border border-slate-800 w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300" id="modalContainer">
+        
+        <!-- Close Button -->
+        <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-slate-800/80 hover:bg-purple-600 text-white flex items-center justify-center transition-colors">
+            <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+
+        <!-- Modal Content Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2">
+            <!-- Left Image -->
+            <div class="h-64 md:h-auto bg-slate-900 overflow-hidden">
+                <img id="modalImage" src="" alt="Project Preview" class="w-full h-full object-cover">
+            </div>
+
+            <!-- Right Content -->
+            <div class="p-8 sm:p-10 flex flex-col justify-between space-y-6">
+                <div class="space-y-4">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 text-xs font-semibold">
+                        <i class="fa-solid fa-circle-check"></i> Project Details
+                    </div>
+                    <h3 id="modalTitle" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight"></h3>
+                    <p id="modalDescription" class="text-slate-400 text-sm sm:text-base leading-relaxed text-justify"></p>
+                </div>
+
+                <!-- Modal Visit Site Button -->
+                <div class="pt-4 border-t border-slate-800">
+                    <a id="modalVisitBtn" href="" target="_blank" class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-sm tracking-wide flex items-center justify-center gap-2 shadow-lg shadow-purple-600/30 transition-all">
+                        Visit Live Website <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- RESPONSIVE FOOTER -->
+<footer class="w-full bg-[#181922] border-t border-slate-800/80 pt-16 pb-12 mt-20">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8">
+        
+        <!-- Main Footer Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start justify-between pb-12 border-b border-slate-800/80">
+            
+            <!-- Left Side: Brand Name, Logo & Slogan (4 Columns) -->
+            <div class="lg:col-span-5 space-y-4">
+                <div class="flex items-center gap-3">
+                    <!-- Welcome Page Style Logo -->
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-700 to-purple-400 flex items-center justify-center shadow-lg shadow-purple-900/30">
+                        <i class="fa-solid fa-code text-white text-base"></i>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-white">
+                        Code<span class="text-purple-400">Vibe</span>
+                    </span>
+                </div>
+                <p class="text-slate-400 text-sm max-w-sm leading-relaxed">
+                    Crafting digital experiences & clean code with passion, creativity, and modern web standards.
+                </p>
+                
+                <!-- Location Badge (Matching Image Reference) -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 text-xs shadow-inner">
+                    <i class="fa-solid fa-location-dot text-purple-400"></i>
+                    <span>Okara, Pakistan</span>
+                </div>
+            </div>
+
+            <!-- Right Side: Newsletter Subscription & Links (7 Columns) -->
+            <div class="lg:col-span-7 flex flex-col lg:items-end space-y-8">
+                
+                <!-- Email Subscription Form (Matching Image Reference) -->
+                <div class="w-full max-w-md space-y-3">
+                    <h4 class="text-white font-semibold text-sm">Subscribe to Our Newsletter</h4>
+                    <form onsubmit="handleFooterSubscribe(event)" class="flex flex-col sm:flex-row gap-2">
+                        <input type="email" required placeholder="Write Email Here" class="flex-grow bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-purple-500 transition-colors">
+                        <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold text-sm px-6 py-3 rounded-xl shadow-lg shadow-purple-600/30 transition-all">
+                            Subscribe
+                        </button>
+                    </form>
+                    <div id="footerSuccess" class="hidden text-emerald-400 text-xs font-medium">
+                        <i class="fa-solid fa-circle-check mr-1"></i> Subscribed successfully!
+                    </div>
+                </div>
+
+                <!-- Navigation Links (Home, About, Services, Project, Contact) -->
+                <div class="w-full pt-4">
+                    <ul class="flex flex-wrap items-center lg:justify-end gap-x-8 gap-y-3 text-sm font-medium text-slate-400">
+                        <li>
+                            <a href="home.html" class="hover:text-purple-400 transition-colors">Home</a>
+                        </li>
+                        <li>
+                            <a href="about.html" class="hover:text-purple-400 transition-colors">About</a>
+                        </li>
+                        <li>
+                            <a href="services.html" class="hover:text-purple-400 transition-colors">Services</a>
+                        </li>
+                        <li>
+                            <a href="project.html" class="hover:text-purple-400 transition-colors">Project</a>
+                        </li>
+                        <li>
+                            <a href="contact.html" class="hover:text-purple-400 transition-colors">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Bottom Copyright Row -->
+        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+            <p>&copy; 2026 CodeVibe. All rights reserved.</p>
+            <p class="flex items-center gap-1">
+                Built with <i class="fa-solid fa-heart text-purple-400 text-[10px]"></i> for the Web
+            </p>
+        </div>
+
+    </div>
+</footer>
+
+
+
+    <!-- JavaScript for Mobile Menu & Scroll Progress Outline -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            }
+        });
+
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scroll-progress').style.width = scrolled + '%';
+        });
+    </script>
+<!-- JavaScript Logic for Modal & FAQ Accordion -->
+<script>
+    // Modal Functions
+    function openModal(title, description, link, imageSrc) {
+        const modal = document.getElementById('projectModal');
+        const container = document.getElementById('modalContainer');
+        
+        document.getElementById('modalTitle').innerText = title;
+        document.getElementById('modalDescription').innerText = description;
+        document.getElementById('modalVisitBtn').href = link;
+        document.getElementById('modalImage').src = imageSrc;
+
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+            modal.classList.remove('opacity-0');
+            container.classList.remove('scale-95');
+            container.classList.add('scale-100');
+        }, 10);
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('projectModal');
+        const container = document.getElementById('modalContainer');
+        
+        modal.classList.add('opacity-0');
+        container.classList.remove('scale-100');
+        container.classList.add('scale-95');
+        
+        setTimeout(() => {
+            modal.classList.add('hidden');
+        }, 300);
+    }
+
+    window.onclick = function(event) {
+        const modal = document.getElementById('projectModal');
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+
+    // FAQ Accordion Function
+    function toggleFaq(id) {
+        const content = document.getElementById('faqContent' + id);
+        const icon = document.getElementById('faqIcon' + id);
+        
+        // Close other FAQs if desired, or toggle current
+        for (let i = 1; i <= 4; i++) {
+            if (i !== id) {
+                document.getElementById('faqContent' + i).classList.add('hidden');
+                document.getElementById('faqIcon' + i).classList.remove('fa-minus', 'rotate-180');
+                document.getElementById('faqIcon' + i).classList.add('fa-plus');
+            }
+        }
+
+        if (content.classList.contains('hidden')) {
+            content.classList.remove('hidden');
+            icon.classList.remove('fa-plus');
+            icon.classList.add('fa-minus', 'rotate-180');
+        } else {
+            content.classList.add('hidden');
+            icon.classList.remove('fa-minus', 'rotate-180');
+            icon.classList.add('fa-plus');
+        }
+    }
+</script>
+<!-- Footer Subscription Script -->
+<script>
+    function handleFooterSubscribe(event) {
+        event.preventDefault();
+        const successMsg = document.getElementById('footerSuccess');
+        successMsg.classList.remove('hidden');
+        event.target.reset();
+        setTimeout(() => {
+            successMsg.classList.add('hidden');
+        }, 4000);
+    }
+</script>
+</body>
+</html>

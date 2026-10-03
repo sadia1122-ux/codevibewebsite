@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - CodeVibe</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        customBg: '#0f1015',
+                        cardBg: '#181922',
+                        purpleAccent: '#9333ea',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #0f1015;
+            color: #f8fafc;
+            height: 250vh; /* Scroll check karne ke liye extra height */
+        }
+    </style>
+</head>
+<body class="selection:bg-purple-500 selection:text-white">
+
+    <!-- Sticky Dual-Tier Navbar -->
+    <header id="navbar" class="sticky top-0 z-50 pt-4 px-4 sm:px-8 bg-[#0f1015]/95 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto flex flex-col items-center">
+            
+            <!-- UPPER LAYER: Tab-Style Menu Bar (Services Active) -->
+            <nav class="hidden md:flex items-center justify-center bg-slate-900/90 rounded-t-xl p-1.5 gap-1 border-t border-x border-slate-800 shadow-lg">
+                <a href="home.html" class="px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-all">Home</a>
+                <a href="about.html" class="px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-all">About</a>
+                <a href="services.html" class="px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-white bg-purple-600 rounded-lg shadow-md transition-all">Services</a>
+                <a href="project.html" class="px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-all">Project</a>
+                <a href="contact.html" class="px-6 py-2.5 text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-white hover:bg-slate-800 rounded-lg transition-all">Contact</a>
+            </nav>
+
+            <!-- LOWER LAYER: Brand Name Logo & Contact Us Button Box -->
+            <div class="w-full bg-[#16171f] border border-slate-800 rounded-2xl px-6 py-4 flex items-center justify-between shadow-2xl relative">
+                
+                <!-- Logo & Brand Name -->
+                <a href="home.html" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-700 to-purple-400 flex items-center justify-center shadow-lg shadow-purple-950 group-hover:scale-105 transition-transform duration-300">
+                        <i class="fa-solid fa-code text-white text-lg"></i>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-white">
+                        Code<span class="text-purple-400">Vibe</span>
+                    </span>
+                </a>
+
+                <!-- Desktop Contact Us Button -->
+                <div class="hidden md:block">
+                    <a href="contact.html" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium text-sm shadow-lg shadow-purple-600/20 hover:shadow-purple-600/40 hover:scale-105 transition-all duration-300">
+                        Contact Us
+                    </a>
+                </div>
+
+                <!-- Mobile Hamburger Button -->
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-slate-300 hover:text-white focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl transition-transform duration-300" id="menu-icon"></i>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Mobile Dropdown Menu (Services Active) -->
+            <div id="mobile-menu" class="hidden md:hidden w-full bg-[#16171f] border-x border-b border-slate-800 rounded-b-2xl px-6 py-5 space-y-3 shadow-2xl mt-[-8px] pt-6 z-[-1]">
+                <a href="home.html" class="block text-sm font-semibold uppercase tracking-wider text-slate-300 hover:text-purple-400 py-1">Home</a>
+                <a href="about.html" class="block text-sm font-semibold uppercase tracking-wider text-slate-300 hover:text-purple-400 py-1">About</a>
+                <a href="services.html" class="block text-sm font-semibold uppercase tracking-wider text-purple-400 py-1">Services</a>
+                <a href="project.html" class="block text-sm font-semibold uppercase tracking-wider text-slate-300 hover:text-purple-400 py-1">Project</a>
+                <a href="contact.html" class="block text-sm font-semibold uppercase tracking-wider text-slate-300 hover:text-purple-400 py-1">Contact</a>
+                <div class="pt-2">
+                    <a href="contact.html" class="block text-center w-full py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-medium text-sm">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Scroll Progress Outline Border -->
+        <div class="w-full max-w-6xl mx-auto h-[2px] bg-slate-800 mt-4">
+            <div id="scroll-progress" class="h-full bg-gradient-to-r from-purple-500 to-indigo-500 w-0 transition-all duration-100"></div>
+        </div>
+    </header>
+
+   <!-- HERO SECTION - CODE VIBE -->
+<section class="relative min-h-[90vh] flex items-center justify-center bg-[#0b0c10] overflow-hidden py-20 px-4 sm:px-8">
+    <!-- Background Gradient Glows -->
+    <div class="absolute top-1/4 left-10 w-96 h-96 bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-1/4 right-10 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center relative z-10">
+        
+        <!-- LEFT SIDE: Heavy Content for Code Vibe (Span 7) -->
+        <div class="lg:col-span-7 space-y-6 text-left">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-950/40 border border-purple-800/50 text-purple-300 text-xs sm:text-sm font-semibold tracking-wide shadow-inner">
+                <i class="fa-solid fa-code"></i> Welcome to Code Vibe | Professional Web Engineering
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl font-black text-white leading-tight tracking-tight">
+                Empowering <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-indigo-300 to-blue-400">Code Vibe</span> With High-Performance Full-Stack Solutions
+            </h1>
+
+            <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
+                At Code Vibe, we transform complex ideas into robust, scalable, and lightning-fast digital solutions. Leveraging industry-leading technologies to build modern web architectures that deliver exceptional user experiences and drive absolute business excellence.
+            </p>
+
+            <!-- Skills Stack Highlights -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-2">
+                <div class="flex items-center gap-3 bg-[#181922]/60 border border-slate-800 p-3.5 rounded-xl">
+                    <div class="w-10 h-10 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-400">
+                        <i class="fa-brands fa-html5 text-lg"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-white text-sm font-bold">HTML5 & CSS3</h4>
+                        <p class="text-slate-400 text-xs">Semantic styling</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 bg-[#181922]/60 border border-slate-800 p-3.5 rounded-xl">
+                    <div class="w-10 h-10 rounded-lg bg-yellow-500/10 flex items-center justify-center text-yellow-400">
+                        <i class="fa-brands fa-js text-lg"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-white text-sm font-bold">JavaScript</h4>
+                        <p class="text-slate-400 text-xs">Interactive logic</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 bg-[#181922]/60 border border-slate-800 p-3.5 rounded-xl">
+                    <div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400">
+                        <i class="fa-brands fa-bootstrap text-lg"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-white text-sm font-bold">Bootstrap</h4>
+                        <p class="text-slate-400 text-xs">Responsive grids</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 bg-[#181922]/60 border border-slate-800 p-3.5 rounded-xl">
+                    <div class="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+                        <i class="fa-solid fa-wind text-lg"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-white text-sm font-bold">Tailwind CSS</h4>
+                        <p class="text-slate-400 text-xs">Modern utility UI</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 bg-[#181922]/60 border border-slate-800 p-3.5 rounded-xl">
+                    <div class="w-10 h-10 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400">
+                        <i class="fa-brands fa-php text-lg"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-white text-sm font-bold">PHP</h4>
+                        <p class="text-slate-400 text-xs">Backend core</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 bg-[#181922]/60 border border-slate-800 p-3.5 rounded-xl">
+                    <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400">
+                        <i class="fa-solid fa-database text-lg"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-white text-sm font-bold">MySQL</h4>
+                        <p class="text-slate-400 text-xs">Data management</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap items-center gap-4 pt-4">
+                <a href="contact.html" class="px-8 py-4 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold text-sm shadow-lg shadow-purple-600/30 hover:opacity-95 transition-all transform hover:-translate-y-0.5">
+                    Get in Touch <i class="fa-solid fa-arrow-right ml-2"></i>
+                </a>
+                <a href="#services-grid" class="px-8 py-4 rounded-xl bg-[#181922] border border-slate-700 text-white font-bold text-sm hover:bg-slate-800 transition-all">
+                    Explore Services
+                </a>
+            </div>
+        </div>
+
+        <!-- RIGHT SIDE: Responsive Stairs / Cascade Image Layout with c1.jpg, c2.jpg, c3.jpg (Span 5) -->
+        <div class="lg:col-span-5 relative w-full h-[420px] sm:h-[480px] flex items-center justify-center">
+            
+            <!-- Image 1 (c1.jpg - Top / Left Step) -->
+            <div class="absolute top-0 left-0 w-[55%] sm:w-[50%] aspect-[4/3] rounded-2xl overflow-hidden border-2 border-slate-700/80 shadow-2xl transition-transform duration-500 hover:scale-105 hover:z-30">
+                <img src="c1.jpg" alt="Code Vibe Project 1" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+            </div>
+
+            <!-- Image 2 (c2.jpg - Middle Step) -->
+            <div class="absolute top-[22%] left-[24%] right-[24%] w-[55%] sm:w-[50%] aspect-[4/3] rounded-2xl overflow-hidden border-2 border-purple-500/40 shadow-2xl transition-transform duration-500 hover:scale-105 hover:z-30">
+                <img src="c2.jpg" alt="Code Vibe Project 2" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+            </div>
+
+            <!-- Image 3 (c3.jpg - Bottom / Right Step) -->
+            <div class="absolute bottom-0 right-0 w-[55%] sm:w-[50%] aspect-[4/3] rounded-2xl overflow-hidden border-2 border-blue-500/40 shadow-2xl transition-transform duration-500 hover:scale-105 hover:z-30">
+                <img src="c3.jpg" alt="Code Vibe Project 3" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+    <!-- 6 CARDS SERVICES SECTION (Overlapping Style) -->
+    <section id="services-grid" class="max-w-6xl mx-auto px-4 sm:px-8 py-16 border-t border-slate-800/80">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-4">
+                Our Core <br>
+                <span class="bg-gradient-to-r from-purple-400 via-fuchsia-300 to-indigo-300 bg-clip-text text-transparent">
+                    Technical Expertise
+                </span>
+            </h2>
+            <p class="text-slate-400 text-base sm:text-lg leading-relaxed">
+                Click on 'Read More' for detailed specifications of each technical skill.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Card 1: HTML -->
+            <div class="group flex flex-col">
+                <div class="aspect-[16/11] w-full rounded-t-3xl overflow-hidden bg-slate-900 border-t border-x border-slate-800">
+                    <img src="s1.jpg" alt="HTML Skill" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="bg-[#181922] border-x border-b border-slate-800 rounded-b-3xl p-6 sm:p-8 flex flex-col flex-grow shadow-xl -mt-6 relative z-10 mx-3 sm:mx-4">
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">HTML5 Markup</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow text-justify">
+                        Building solid structural foundations with semantic tags and high accessibility standards for modern web pages.
+                    </p>
+                    <button onclick="openModal('html-modal')" class="inline-flex items-center text-purple-400 font-semibold text-sm hover:text-purple-300 transition-colors cursor-pointer">
+                        Read more <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 2: CSS -->
+            <div class="group flex flex-col">
+                <div class="aspect-[16/11] w-full rounded-t-3xl overflow-hidden bg-slate-900 border-t border-x border-slate-800">
+                    <img src="s2.jpg" alt="CSS Skill" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="bg-[#181922] border-x border-b border-slate-800 rounded-b-3xl p-6 sm:p-8 flex flex-col flex-grow shadow-xl -mt-6 relative z-10 mx-3 sm:mx-4">
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">CSS3 Styling</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow text-justify">
+                        Designing responsive layouts, smooth animations, and gorgeous modern aesthetics across all viewports.
+                    </p>
+                    <button onclick="openModal('css-modal')" class="inline-flex items-center text-purple-400 font-semibold text-sm hover:text-purple-300 transition-colors cursor-pointer">
+                        Read more <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 3: JavaScript -->
+            <div class="group flex flex-col">
+                <div class="aspect-[16/11] w-full rounded-t-3xl overflow-hidden bg-slate-900 border-t border-x border-slate-800">
+                    <img src="s3.jpg" alt="JavaScript Skill" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="bg-[#181922] border-x border-b border-slate-800 rounded-b-3xl p-6 sm:p-8 flex flex-col flex-grow shadow-xl -mt-6 relative z-10 mx-3 sm:mx-4">
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">JavaScript Logic</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow text-justify">
+                        Powering dynamic user interactions, event handling, and real-time client-side scripting functionality.
+                    </p>
+                    <button onclick="openModal('js-modal')" class="inline-flex items-center text-purple-400 font-semibold text-sm hover:text-purple-300 transition-colors cursor-pointer">
+                        Read more <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 4: Bootstrap & Tailwind -->
+            <div class="group flex flex-col">
+                <div class="aspect-[16/11] w-full rounded-t-3xl overflow-hidden bg-slate-900 border-t border-x border-slate-800">
+                    <img src="s1.jpg" alt="Frameworks Skill" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="bg-[#181922] border-x border-b border-slate-800 rounded-b-3xl p-6 sm:p-8 flex flex-col flex-grow shadow-xl -mt-6 relative z-10 mx-3 sm:mx-4">
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">Bootstrap & Tailwind</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow text-justify">
+                        Accelerating development cycles with utility-first and grid-based responsive CSS frameworks.
+                    </p>
+                    <button onclick="openModal('frameworks-modal')" class="inline-flex items-center text-purple-400 font-semibold text-sm hover:text-purple-300 transition-colors cursor-pointer">
+                        Read more <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 5: PHP -->
+            <div class="group flex flex-col">
+                <div class="aspect-[16/11] w-full rounded-t-3xl overflow-hidden bg-slate-900 border-t border-x border-slate-800">
+                    <img src="s2.jpg" alt="PHP Skill" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="bg-[#181922] border-x border-b border-slate-800 rounded-b-3xl p-6 sm:p-8 flex flex-col flex-grow shadow-xl -mt-6 relative z-10 mx-3 sm:mx-4">
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">PHP Backend</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow text-justify">
+                        Developing secure server-side logic, user authentication, and dynamic page content generation.
+                    </p>
+                    <button onclick="openModal('php-modal')" class="inline-flex items-center text-purple-400 font-semibold text-sm hover:text-purple-300 transition-colors cursor-pointer">
+                        Read more <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 6: MySQL -->
+            <div class="group flex flex-col">
+                <div class="aspect-[16/11] w-full rounded-t-3xl overflow-hidden bg-slate-900 border-t border-x border-slate-800">
+                    <img src="s3.jpg" alt="MySQL Skill" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="bg-[#181922] border-x border-b border-slate-800 rounded-b-3xl p-6 sm:p-8 flex flex-col flex-grow shadow-xl -mt-6 relative z-10 mx-3 sm:mx-4">
+                    <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">MySQL Database</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6 flex-grow text-justify">
+                        Structuring robust relational databases ensuring safe data transmission and faultless record management.
+                    </p>
+                    <button onclick="openModal('mysql-modal')" class="inline-flex items-center text-purple-400 font-semibold text-sm hover:text-purple-300 transition-colors cursor-pointer">
+                        Read more <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US SECTION -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-8 py-16 border-t border-slate-800/80">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-purple-400 font-semibold text-sm uppercase tracking-wider">Why Partner With Us</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2 mb-4">Engineering Superiority In Every Line Of Code</h2>
+            <p class="text-slate-400 text-base">We combine technical depth with aesthetic perfection to deliver enterprise-grade outcomes.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-[#181922] border border-slate-800 p-8 rounded-3xl">
+                <div class="w-12 h-12 rounded-xl bg-purple-600/10 text-purple-400 flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">Absolute Security</h3>
+                <p class="text-slate-400 text-sm text-justify">Strict coding standards and data protection protocols guard your digital architecture.</p>
+            </div>
+            <div class="bg-[#181922] border border-slate-800 p-8 rounded-3xl">
+                <div class="w-12 h-12 rounded-xl bg-purple-600/10 text-purple-400 flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-bolt"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">High Execution Speed</h3>
+                <p class="text-slate-400 text-sm text-justify">Optimized asset delivery and clean routing guarantee lightning-fast load times.</p>
+            </div>
+            <div class="bg-[#181922] border border-slate-800 p-8 rounded-3xl">
+                <div class="w-12 h-12 rounded-xl bg-purple-600/10 text-purple-400 flex items-center justify-center text-xl mb-4">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-2">Dedicated Support</h3>
+                <p class="text-slate-400 text-sm text-justify">Continuous maintenance and scalable updates to keep your platform future-proof.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+<section class="max-w-4xl mx-auto px-4 sm:px-8 py-16 border-t border-slate-800/80">
+    <div class="text-center mb-16">
+        <span class="text-purple-400 font-semibold text-sm uppercase tracking-wider">Got Questions?</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Frequently Asked Questions</h2>
+    </div>
+    <div class="space-y-4">
+        <!-- FAQ Item 1 -->
+        <div class="bg-[#181922] border border-slate-800 rounded-2xl overflow-hidden transition-all duration-300">
+            <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex justify-between items-center cursor-pointer focus:outline-none">
+                <span class="text-lg font-bold text-white">What technologies are used in development?</span>
+                <i class="fa-solid fa-chevron-down text-purple-400 transition-transform duration-300"></i>
+            </button>
+            <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 px-6">
+                <p class="text-slate-400 text-sm text-justify pb-6">We utilize standard foundational stacks including HTML5, CSS3, JavaScript, Bootstrap, Tailwind CSS, PHP, and MySQL.</p>
+            </div>
+        </div>
+
+        <!-- FAQ Item 2 -->
+        <div class="bg-[#181922] border border-slate-800 rounded-2xl overflow-hidden transition-all duration-300">
+            <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex justify-between items-center cursor-pointer focus:outline-none">
+                <span class="text-lg font-bold text-white">Are the websites fully responsive?</span>
+                <i class="fa-solid fa-chevron-down text-purple-400 transition-transform duration-300"></i>
+            </button>
+            <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 px-6">
+                <p class="text-slate-400 text-sm text-justify pb-6">Yes, every project is engineered with mobile-first adaptability ensuring immaculate rendering on all viewports.</p>
+            </div>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="bg-[#181922] border border-slate-800 rounded-2xl overflow-hidden transition-all duration-300">
+            <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex justify-between items-center cursor-pointer focus:outline-none">
+                <span class="text-lg font-bold text-white">How can I request custom web development?</span>
+                <i class="fa-solid fa-chevron-down text-purple-400 transition-transform duration-300"></i>
+            </button>
+            <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 px-6">
+                <p class="text-slate-400 text-sm text-justify pb-6">You can easily reach out through our contact page to discuss your specific organizational requirements.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- CTA BANNER SECTION -->
+    <section class="max-w-6xl mx-auto px-4 sm:px-8 py-16 mb-12 border-t border-slate-800/80">
+        <div class="bg-gradient-to-r from-purple-900/40 via-purple-800/20 to-indigo-900/40 border border-purple-500/30 rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden shadow-2xl">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-600/20 via-transparent to-transparent pointer-events-none"></div>
+            <div class="relative z-10 max-w-2xl mx-auto">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Ready to Elevate Your Digital Footprint?</h2>
+                <p class="text-slate-300 text-sm sm:text-base mb-8 text-justify sm:text-center">Collaborate with us today and experience enterprise-grade web engineering customized for your business success.</p>
+                <a href="contact.html" class="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold text-base shadow-lg shadow-purple-600/30 hover:shadow-purple-600/50 hover:scale-105 transition-all duration-300">
+                    <span>Let's Build Together</span>
+                    <i class="fa-solid fa-paper-plane"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODALS CONTAINER -->
+    <!-- HTML Modal -->
+    <div id="html-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm hidden p-4">
+        <div class="bg-[#181922] border border-slate-800 rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl">
+            <button onclick="closeModal('html-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="text-2xl font-bold text-white mb-4">HTML5 Markup Engineering</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-4 text-justify">
+                HTML5 forms the absolute backbone of web pages. Our approach ensures semantic correctness, clean document architecture, and optimum accessibility for search engine indexers.
+            </p>
+            <h4 class="text-white font-semibold text-sm mb-2">Key Features:</h4>
+            <ul class="space-y-2 text-sm text-slate-400 mb-6">
+                <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Semantic Document Structure</li>
+                <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> W3C Standards Compliance</li>
+                <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> SEO-Friendly Element Tagging</li>
+            </ul>
+            <button onclick="closeModal('html-modal')" class="w-full py-3 rounded-xl bg-purple-600 text-white font-semibold text-sm hover:bg-purple-700 transition-colors">Close Modal</button>
+        </div>
+    </div>
+
+    <!-- CSS Modal -->
+    <div id="css-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm hidden p-4">
+        <div class="bg-[#181922] border border-slate-800 rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl">
+            <button onclick="closeModal('css-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="text-2xl font-bold text-white mb-4">CSS3 Visual Styling</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-4 text-justify">
+                We craft fluid, responsive, and gorgeous visual presentations using advanced CSS3 properties, flexbox grids, and smooth hardware-accelerated transitions.
+            </p>
+            <h4 class="text-white font-semibold text-sm mb-2">Key Features:</h4>
+            <ul class="space-y-2 text-sm text-slate-400 mb-6">
+                <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Flexbox & Grid Master Layouts</li>
+                <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Smooth Keyframe Animations</li>
+                <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Fluid Viewport Scaling</li>
+            </ul>
+            <button onclick="closeModal('css-modal')" class="w-full py-3 rounded-xl bg-purple-600 text-white font-semibold text-sm hover:bg-purple-700 transition-colors">Close Modal</button>
+        </div>
+    </div>
+
+    <!-- JavaScript Modal -->
+    <div id="js-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm hidden p-4">
+        <div class="bg-[#181922] border border-slate-800 rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl">
+            <button onclick="closeModal('js-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="text-2xl font-bold text-white mb-4">JavaScript Client-Side Logic</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-4 text-justify">
+                Transform static pages into interactive digital experiences. We use modular, optimized vanilla JavaScript scripts to handle client-side operations seamlessly.
+            </p>
+            <h4 class="text-white font-semibold text-sm mb-2">Key Features:</h4>
+            <ul class="space-y-2 text-sm text-slate-400 mb-6">
+                <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Dynamic DOM Manipulation</li>
+                <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Advanced Event Handling</li>
+                <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> High-Speed Execution Scripts</li>
+            </ul>
+            <button onclick="closeModal('js-modal')" class="w-full py-3 rounded-xl bg-purple-600 text-white font-semibold text-sm hover:bg-purple-700 transition-colors">Close Modal</button>
+        </div>
+    </div>
+
+    <!-- Frameworks Modal -->
+    <div id="frameworks-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm hidden p-4">
+        <div class="bg-[#181922] border border-slate-800 rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl">
+            <button onclick="closeModal('frameworks-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="text-2xl font-bold text-white mb-4">Bootstrap & Tailwind Frameworks</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-4 text-justify">
+                Leveraging industry-leading CSS frameworks to rapidly prototype and build fully consistent, mobile-first responsive layouts with clean utility classes.
+            </p>
+            <h4 class="text-white font-semibold text-sm mb-2">Key Features:</h4>
+            <ul class="space-y-2 text-sm text-slate-400 mb-6">
+                <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Utility-First Styling (Tailwind)</li>
+                <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Responsive Grid Systems (Bootstrap)</li>
+                <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Rapid UI Prototyping</li>
+            </ul>
+            <button onclick="closeModal('frameworks-modal')" class="w-full py-3 rounded-xl bg-purple-600 text-white font-semibold text-sm hover:bg-purple-700 transition-colors">Close Modal</button>
+        </div>
+    </div>
+
+    <!-- PHP Modal -->
+    <div id="php-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm hidden p-4">
+        <div class="bg-[#181922] border border-slate-800 rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl">
+            <button onclick="closeModal('php-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="text-2xl font-bold text-white mb-4">PHP Backend Development</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-4 text-justify">
+                Handling server-side architecture securely. PHP powers form submissions, session handling, user authentication, and dynamic backend logic processing.
+            </p>
+            <h4 class="text-white font-semibold text-sm mb-2">Key Features:</h4>
+            <ul class="space-y-2 text-sm text-slate-400 mb-6">
+                <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Secure Server-Side Logic</li>
+                <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> User Authentication Handling</li>
+                <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Dynamic Page Content Processing</li>
+            </ul>
+            <button onclick="closeModal('php-modal')" class="w-full py-3 rounded-xl bg-purple-600 text-white font-semibold text-sm hover:bg-purple-700 transition-colors">Close Modal</button>
+        </div>
+    </div>
+
+    <!-- MySQL Modal -->
+    <div id="mysql-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm hidden p-4">
+        <div class="bg-[#181922] border border-slate-800 rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl">
+            <button onclick="closeModal('mysql-modal')" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="text-2xl font-bold text-white mb-4">MySQL Database Management</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-4 text-justify">
+                Organizing, storing, and managing relational data safely. Our MySQL database solutions guarantee faultless record management and secure queries.
+            </p>
+            <h4 class="text-white font-semibold text-sm mb-2">Key Features:</h4>
+            <ul class="space-y-2 text-sm text-slate-400 mb-6">
+                <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Relational Database Structuring</li>
+                <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Secure Query Execution</li>
+                <li><i class="fa-solid fa-check text-purple-400 mr-2"></i> Faultless Record Management</li>
+            </ul>
+            <button onclick="closeModal('mysql-modal')" class="w-full py-3 rounded-xl bg-purple-600 text-white font-semibold text-sm hover:bg-purple-700 transition-colors">Close Modal</button>
+        </div>
+    </div>
+
+   <!-- RESPONSIVE FOOTER -->
+<footer class="w-full bg-[#181922] border-t border-slate-800/80 pt-16 pb-12 mt-20">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8">
+        
+        <!-- Main Footer Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start justify-between pb-12 border-b border-slate-800/80">
+            
+            <!-- Left Side: Brand Name, Logo & Slogan (4 Columns) -->
+            <div class="lg:col-span-5 space-y-4">
+                <div class="flex items-center gap-3">
+                    <!-- Welcome Page Style Logo -->
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-700 to-purple-400 flex items-center justify-center shadow-lg shadow-purple-900/30">
+                        <i class="fa-solid fa-code text-white text-base"></i>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-white">
+                        Code<span class="text-purple-400">Vibe</span>
+                    </span>
+                </div>
+                <p class="text-slate-400 text-sm max-w-sm leading-relaxed">
+                    Crafting digital experiences & clean code with passion, creativity, and modern web standards.
+                </p>
+                
+                <!-- Location Badge (Matching Image Reference) -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 text-xs shadow-inner">
+                    <i class="fa-solid fa-location-dot text-purple-400"></i>
+                    <span>Okara, Pakistan</span>
+                </div>
+            </div>
+
+            <!-- Right Side: Newsletter Subscription & Links (7 Columns) -->
+            <div class="lg:col-span-7 flex flex-col lg:items-end space-y-8">
+                
+                <!-- Email Subscription Form (Matching Image Reference) -->
+                <div class="w-full max-w-md space-y-3">
+                    <h4 class="text-white font-semibold text-sm">Subscribe to Our Newsletter</h4>
+                    <form onsubmit="handleFooterSubscribe(event)" class="flex flex-col sm:flex-row gap-2">
+                        <input type="email" required placeholder="Write Email Here" class="flex-grow bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-purple-500 transition-colors">
+                        <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold text-sm px-6 py-3 rounded-xl shadow-lg shadow-purple-600/30 transition-all">
+                            Subscribe
+                        </button>
+                    </form>
+                    <div id="footerSuccess" class="hidden text-emerald-400 text-xs font-medium">
+                        <i class="fa-solid fa-circle-check mr-1"></i> Subscribed successfully!
+                    </div>
+                </div>
+
+                <!-- Navigation Links (Home, About, Services, Project, Contact) -->
+                <div class="w-full pt-4">
+                    <ul class="flex flex-wrap items-center lg:justify-end gap-x-8 gap-y-3 text-sm font-medium text-slate-400">
+                        <li>
+                            <a href="home.html" class="hover:text-purple-400 transition-colors">Home</a>
+                        </li>
+                        <li>
+                            <a href="about.html" class="hover:text-purple-400 transition-colors">About</a>
+                        </li>
+                        <li>
+                            <a href="services.html" class="hover:text-purple-400 transition-colors">Services</a>
+                        </li>
+                        <li>
+                            <a href="project.html" class="hover:text-purple-400 transition-colors">Project</a>
+                        </li>
+                        <li>
+                            <a href="contact.html" class="hover:text-purple-400 transition-colors">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Bottom Copyright Row -->
+        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+            <p>&copy; 2026 CodeVibe. All rights reserved.</p>
+            <p class="flex items-center gap-1">
+                Built with <i class="fa-solid fa-heart text-purple-400 text-[10px]"></i> for the Web
+            </p>
+        </div>
+
+    </div>
+</footer>
+
+
+    <!-- JavaScript for Mobile Menu & Scroll Progress Outline -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.remove('fa-xmark');
+                menuIcon.classList.add('fa-bars');
+            } else {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-xmark');
+            }
+        });
+
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scroll-progress').style.width = scrolled + '%';
+        });
+    </script>
+ <!-- JavaScript for Modals -->
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+    <script>
+function toggleFaq(button) {
+    const content = button.nextElementSibling;
+    const icon = button.querySelector('fa-chevron-down') || button.querySelector('i');
+    
+    // Close all other FAQs (Optional: agar aap chahte hain ke aik waqt mein aik hi khulay)
+    document.querySelectorAll('.faq-content').forEach((item) => {
+        if (item !== content) {
+            item.style.maxHeight = null;
+            item.previousElementSibling.querySelector('i').style.transform = 'rotate(0deg)';
+        }
+    });
+
+    // Toggle current FAQ
+    if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+        content.style.maxHeight = null;
+        icon.style.transform = 'rotate(0deg)';
+    } else {
+        content.style.maxHeight = content.scrollHeight + 'px';
+        icon.style.transform = 'rotate(180deg)';
+    }
+}
+</script>
+<!-- Footer Subscription Script -->
+<script>
+    function handleFooterSubscribe(event) {
+        event.preventDefault();
+        const successMsg = document.getElementById('footerSuccess');
+        successMsg.classList.remove('hidden');
+        event.target.reset();
+        setTimeout(() => {
+            successMsg.classList.add('hidden');
+        }, 4000);
+    }
+</script>
+</body>
+</html>
